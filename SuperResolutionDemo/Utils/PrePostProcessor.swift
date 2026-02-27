@@ -13,7 +13,9 @@ import UIKit
 
 class PrePostProcessor : NSObject {
     
-    // 超分模型输出尺寸（根据你的模型设定）
+    // 超分模型输入输出尺寸（根据你的模型设定）
+    static let inputWidth = 384
+    static let inputHeight = 512
     static let outputWidth = 768
     static let outputHeight = 1024
     

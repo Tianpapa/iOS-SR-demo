@@ -52,7 +52,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             DispatchQueue.global().async {
                 // 调用模型推理
-                guard let outputs = self.inferencer.module.detect(image: pointer) else {
+                guard let outputs = self.inferencer.module.upscale(image: pointer) else {
                     DispatchQueue.main.async {
                         self.btnRun.isEnabled = true
                         self.btnRun.setTitle("Run SR", for: .normal)

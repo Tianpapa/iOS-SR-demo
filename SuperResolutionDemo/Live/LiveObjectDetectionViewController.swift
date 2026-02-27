@@ -16,7 +16,7 @@ class LiveObjectDetectionViewController: ViewController {
     private var prevTimestampMs: Double = 0.0
     private var cameraController = CameraController()
     private var imageViewLive =  UIImageView()
-    private var inferencer = ObjectDetector()
+    private var inferencer = SuperResolutionModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,27 +35,27 @@ class LiveObjectDetectionViewController: ViewController {
             if (currentTimestamp - strongSelf.prevTimestampMs) * 1000 <= strongSelf.delayMs { return }
             strongSelf.prevTimestampMs = currentTimestamp
             let startTime = CACurrentMediaTime()
-            guard let outputs = self?.inferencer.module.detect(image: &pixelBuffer) else {
+            guard let outputs = self?.inferencer.module.upscale(image: &pixelBuffer) else {
                 return
             }
             let inferenceTime = CACurrentMediaTime() - startTime
                 
-            DispatchQueue.main.async {
-                let ivScaleX : Double =  Double(strongSelf.imageViewLive.frame.size.width / CGFloat(PrePostProcessor.inputWidth))
-                let ivScaleY : Double = Double(strongSelf.imageViewLive.frame.size.height / CGFloat(PrePostProcessor.inputHeight))
-
-                let startX = Double((strongSelf.imageViewLive.frame.size.width - CGFloat(ivScaleX) * CGFloat(PrePostProcessor.inputWidth))/2)
-                let startY = Double((strongSelf.imageViewLive.frame.size.height -  CGFloat(ivScaleY) * CGFloat(PrePostProcessor.inputHeight))/2)
-                
-                let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
-
-                PrePostProcessor.cleanDetection(imageView: strongSelf.imageViewLive)
-                strongSelf.indicator.isHidden = true
-                strongSelf.benchmarkLabel.isHidden = false
-                strongSelf.benchmarkLabel.text = String(format: "%.2fms", 1000*inferenceTime)
-                
-                PrePostProcessor.showDetection(imageView: strongSelf.imageViewLive, nmsPredictions: nmsPredictions, classes: strongSelf.inferencer.classes)
-            }
+//            DispatchQueue.main.async {
+//                let ivScaleX : Double =  Double(strongSelf.imageViewLive.frame.size.width / CGFloat(PrePostProcessor.inputWidth))
+//                let ivScaleY : Double = Double(strongSelf.imageViewLive.frame.size.height / CGFloat(PrePostProcessor.inputHeight))
+//
+//                let startX = Double((strongSelf.imageViewLive.frame.size.width - CGFloat(ivScaleX) * CGFloat(PrePostProcessor.inputWidth))/2)
+//                let startY = Double((strongSelf.imageViewLive.frame.size.height -  CGFloat(ivScaleY) * CGFloat(PrePostProcessor.inputHeight))/2)
+//                
+//                let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
+//
+//                PrePostProcessor.cleanDetection(imageView: strongSelf.imageViewLive)
+//                strongSelf.indicator.isHidden = true
+//                strongSelf.benchmarkLabel.isHidden = false
+//                strongSelf.benchmarkLabel.text = String(format: "%.2fms", 1000*inferenceTime)
+//                
+//                PrePostProcessor.showDetection(imageView: strongSelf.imageViewLive, nmsPredictions: nmsPredictions, classes: strongSelf.inferencer.classes)
+//            }
         }
     }
 

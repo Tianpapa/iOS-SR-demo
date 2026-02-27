@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (nullable NSArray<NSNumber*>*)detectImage:(void*)imageBuffer NS_SWIFT_NAME(detect(image:));
+- (nullable NSArray<NSNumber*>*)upscaleImage:(void*)imageBuffer NS_SWIFT_NAME(upscale(image:));
 
 @end
 
