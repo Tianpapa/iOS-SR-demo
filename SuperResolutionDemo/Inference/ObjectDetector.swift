@@ -25,3 +25,14 @@ class ObjectDetector {
         }
     }()
 }
+
+class SuperResolutionModel {
+    lazy var module: InferenceModule = {
+        if let filePath = Bundle.main.path(forResource: "SPAN_320_x2_c32_e4495_384x512.torchscript", ofType: "ptl"),
+        let module = InferenceModule(fileAtPath: filePath) {
+            return module
+        } else {
+            fatalError("Failed to load model!")
+        }
+    }()
+}

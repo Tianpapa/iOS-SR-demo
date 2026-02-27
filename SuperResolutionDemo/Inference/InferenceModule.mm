@@ -8,9 +8,16 @@
 #import <Libtorch-Lite/Libtorch-Lite.h>
 
 // 640x640 is the default image size used in the export.py in the yolov5 repo to export the TorchScript model, 25200*85 is the model output size
-const int input_width = 640;
-const int input_height = 640;
-const int output_size = 25200*85;
+// const int input_width = 640;
+// const int input_height = 640;
+// const int output_size = 25200*85;
+
+// 超分模型尺寸
+const int input_width = 384;
+const int input_height = 512;
+const int output_width = 768;
+const int output_height = 1024;
+const int output_size = output_width * output_height;  // 786432
 
 
 @implementation InferenceModule {
