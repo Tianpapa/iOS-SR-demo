@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hfG-bE-X4J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hfG-bE-X4J">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,26 +12,38 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ObjectDetection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SuperResolutionDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SRR-fU-drQ">
-                                <rect key="frame" x="0.0" y="188" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="250" width="414" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="414" id="91b-dW-d6L"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5T-Eu-U1r">
-                                <rect key="frame" x="136" y="627" width="142" height="30"/>
+                                <rect key="frame" x="247" y="689" width="142" height="35"/>
                                 <state key="normal" title="Running the model..."/>
                                 <connections>
                                     <action selector="runTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nDQ-kn-r2l"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="835-pY-WUQ">
+                                <rect key="frame" x="100" y="689" width="139" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Mtx-7w-1By"/>
+                                    <constraint firstAttribute="width" constant="139" id="dk8-4E-xHp"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Preprocess"/>
+                                <connections>
+                                    <action selector="pseudoIRTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I33-aS-sVk"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOC-XB-vDL">
-                                <rect key="frame" x="50" y="677" width="110" height="30"/>
+                                <rect key="frame" x="50" y="744" width="110" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="u6p-wo-YZb"/>
                                 </constraints>
@@ -40,7 +53,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-Yr-ype">
-                                <rect key="frame" x="200" y="677" width="48" height="30"/>
+                                <rect key="frame" x="200" y="744" width="48" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="57C-Gz-qXn"/>
                                 </constraints>
@@ -50,7 +63,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnC-JU-BNk">
-                                <rect key="frame" x="293" y="677" width="54" height="30"/>
+                                <rect key="frame" x="293" y="739" width="54" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="mt5-Dh-6Bc"/>
                                 </constraints>
@@ -75,18 +88,28 @@
                             <constraint firstItem="HOC-XB-vDL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="4VV-AN-7Az"/>
                             <constraint firstItem="rnC-JU-BNk" firstAttribute="top" secondItem="SRR-fU-drQ" secondAttribute="bottom" constant="75" id="7XH-Qv-T1q"/>
                             <constraint firstItem="Ngn-Yr-ype" firstAttribute="leading" secondItem="HOC-XB-vDL" secondAttribute="trailing" constant="40" id="Adb-QU-DoN"/>
+                            <constraint firstItem="835-pY-WUQ" firstAttribute="top" secondItem="SRR-fU-drQ" secondAttribute="bottom" constant="25" id="Bjn-PH-cGY"/>
                             <constraint firstItem="HOC-XB-vDL" firstAttribute="top" secondItem="x5T-Eu-U1r" secondAttribute="bottom" constant="20" id="CKX-YV-iok"/>
                             <constraint firstItem="SRR-fU-drQ" firstAttribute="centerX" secondItem="x5T-Eu-U1r" secondAttribute="centerX" id="CMU-q7-8Qh"/>
+                            <constraint firstItem="x5T-Eu-U1r" firstAttribute="leading" secondItem="835-pY-WUQ" secondAttribute="trailing" constant="8" id="HED-Dx-AQ0"/>
                             <constraint firstItem="Ngn-Yr-ype" firstAttribute="top" secondItem="x5T-Eu-U1r" secondAttribute="bottom" constant="20" id="ScM-9t-yR6"/>
                             <constraint firstItem="SRR-fU-drQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yqn-0Q-sWL"/>
                             <constraint firstItem="rnC-JU-BNk" firstAttribute="leading" secondItem="Ngn-Yr-ype" secondAttribute="trailing" constant="45" id="ZIZ-l5-GOk"/>
+                            <constraint firstItem="HOC-XB-vDL" firstAttribute="top" secondItem="835-pY-WUQ" secondAttribute="bottom" constant="20" id="ZQo-1k-mwA"/>
                             <constraint firstItem="SRR-fU-drQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="k1r-XA-qbB"/>
                             <constraint firstItem="x5T-Eu-U1r" firstAttribute="top" secondItem="SRR-fU-drQ" secondAttribute="bottom" constant="25" id="oip-GM-Bry"/>
+                            <constraint firstItem="835-pY-WUQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="pvJ-GC-hVa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CMU-q7-8Qh"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="kQP-ee-aZT"/>
                     <connections>
                         <outlet property="btnNext" destination="HOC-XB-vDL" id="jIw-Nc-Wed"/>
+                        <outlet property="btnPreprocess" destination="835-pY-WUQ" id="GHG-PA-zHc"/>
                         <outlet property="btnRun" destination="x5T-Eu-U1r" id="jp1-u7-s29"/>
                         <outlet property="imageView" destination="SRR-fU-drQ" id="kU6-wU-0Qx"/>
                     </connections>
@@ -98,13 +121,13 @@
         <!--Live Object Detection View Controller-->
         <scene sceneID="h64-1C-Xb1">
             <objects>
-                <viewController id="UuY-8v-DgG" customClass="LiveObjectDetectionViewController" customModule="ObjectDetection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UuY-8v-DgG" customClass="LiveObjectDetectionViewController" customModule="SuperResolutionDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hOb-Ds-Tyd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1N-YE-c0x" customClass="CameraPreviewView" customModule="ObjectDetection" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="188" width="414" height="582"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1N-YE-c0x" customClass="CameraPreviewView" customModule="SuperResolutionDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="250" width="414" height="486"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="9NI-4z-9wd">
                                         <rect key="frame" x="197" y="287" width="20" height="20"/>
@@ -114,7 +137,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="model inference time: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r78-Cx-klO">
-                                <rect key="frame" x="103" y="830" width="209" height="22"/>
+                                <rect key="frame" x="103" y="796" width="209" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="PIT-lc-aEs"/>
                                     <constraint firstAttribute="width" constant="209" id="ppi-hq-sIO"/>
@@ -153,7 +176,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfG-bE-X4J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9KG-uo-sPX">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="96" width="414" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
