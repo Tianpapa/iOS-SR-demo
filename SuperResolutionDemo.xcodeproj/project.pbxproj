@@ -31,7 +31,7 @@
 		26A8C11426E17F8100F4A58D /* yolov5s.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */; };
 		26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */; };
 		9866517B1327B244D5B05DF1 /* Pods_SuperResolutionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */; };
-		F17D918A2F5197C600E695C0 /* SPAN_320_x2_c32_e4495_384x512.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = F17D91892F5197C600E695C0 /* SPAN_320_x2_c32_e4495_384x512.torchscript.ptl */; };
+		F17D91962F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +67,7 @@
 		8BF0B348976B1D05DE4E19DA /* Pods-ObjectDetection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.release.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.release.xcconfig"; sourceTree = "<group>"; };
 		9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperResolutionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3283DED73DDA4E4E022B11A /* Pods-SuperResolutionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperResolutionDemo.release.xcconfig"; path = "Target Support Files/Pods-SuperResolutionDemo/Pods-SuperResolutionDemo.release.xcconfig"; sourceTree = "<group>"; };
-		F17D91892F5197C600E695C0 /* SPAN_320_x2_c32_e4495_384x512.torchscript.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_320_x2_c32_e4495_384x512.torchscript.ptl; sourceTree = "<group>"; };
+		F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 				2669BE15270FA65200806A63 /* aicook3.jpg */,
 				266E87222563120D00CF5151 /* classes.txt */,
 				26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */,
-				F17D91892F5197C600E695C0 /* SPAN_320_x2_c32_e4495_384x512.torchscript.ptl */,
+				F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */,
 			);
 			path = SuperResolutionDemo;
 			sourceTree = "<group>";
@@ -239,7 +239,6 @@
 				269E747E255CC56400B1D6CA /* LaunchScreen.storyboard in Resources */,
 				2669BE18270FA65200806A63 /* aicook.txt in Resources */,
 				26A8C11426E17F8100F4A58D /* yolov5s.torchscript.ptl in Resources */,
-				F17D918A2F5197C600E695C0 /* SPAN_320_x2_c32_e4495_384x512.torchscript.ptl in Resources */,
 				266E87232563120D00CF5151 /* classes.txt in Resources */,
 				269E747B255CC56400B1D6CA /* Assets.xcassets in Resources */,
 				2669BE19270FA65200806A63 /* aicook1.jpg in Resources */,
@@ -248,6 +247,7 @@
 				269E7488255CC69400B1D6CA /* test1.png in Resources */,
 				269E7479255CC56200B1D6CA /* Main.storyboard in Resources */,
 				2669BE1A270FA65200806A63 /* aicook3.jpg in Resources */,
+				F17D91962F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl in Resources */,
 				269E748C255CC6D100B1D6CA /* test3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,5 +8,5 @@ target 'SuperResolutionDemo' do
   use_frameworks!
 
   # Pods for SuperResolutionDemo
-  pod 'LibTorch-Lite', '~>1.10.0'
+  pod 'LibTorch-Lite', '~>1.13.0'
 end
