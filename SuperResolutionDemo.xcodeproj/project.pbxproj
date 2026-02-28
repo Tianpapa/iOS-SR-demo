@@ -28,7 +28,6 @@
 		269E748D255CC6D100B1D6CA /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 269E748B255CC6D100B1D6CA /* test2.jpg */; };
 		269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 269E7496255CCBA000B1D6CA /* InferenceModule.mm */; };
 		269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */; };
-		26A8C11426E17F8100F4A58D /* yolov5s.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */; };
 		26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */; };
 		9866517B1327B244D5B05DF1 /* Pods_SuperResolutionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */; };
 		F17D91962F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */; };
@@ -60,7 +59,6 @@
 		269E7496255CCBA000B1D6CA /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
 		269E7497255CCBA000B1D6CA /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
-		26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov5s.torchscript.ptl; sourceTree = "<group>"; };
 		26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePostProcessor.swift; sourceTree = "<group>"; };
 		2A0FA3B3CC601F0EFA90D6CE /* Pods-SuperResolutionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperResolutionDemo.debug.xcconfig"; path = "Target Support Files/Pods-SuperResolutionDemo/Pods-SuperResolutionDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		34537605AF0692AFB928F012 /* Pods-ObjectDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.debug.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 				2669BE11270FA61000806A63 /* aicook2.jpg */,
 				2669BE15270FA65200806A63 /* aicook3.jpg */,
 				266E87222563120D00CF5151 /* classes.txt */,
-				26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */,
 				F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */,
 			);
 			path = SuperResolutionDemo;
@@ -238,7 +235,6 @@
 			files = (
 				269E747E255CC56400B1D6CA /* LaunchScreen.storyboard in Resources */,
 				2669BE18270FA65200806A63 /* aicook.txt in Resources */,
-				26A8C11426E17F8100F4A58D /* yolov5s.torchscript.ptl in Resources */,
 				266E87232563120D00CF5151 /* classes.txt in Resources */,
 				269E747B255CC56400B1D6CA /* Assets.xcassets in Resources */,
 				2669BE19270FA65200806A63 /* aicook1.jpg in Resources */,

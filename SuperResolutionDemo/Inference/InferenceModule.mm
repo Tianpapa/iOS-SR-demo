@@ -68,16 +68,21 @@ const int output_size = output_width * output_height;  // 786432
 
 - (NSArray<NSNumber*>*)upscaleImage:(void*)imageBuffer {
     try {
-        // 原为 {1, 3, input_height, input_width}，现改为单通道 {1, 1, input_height, input_width}
+        // 输入张量：形状 {1, 1, input_height, input_width}
         at::Tensor tensor = torch::from_blob(imageBuffer, {1, 1, input_height, input_width}, at::kFloat);
 
         c10::InferenceMode guard;
         CFTimeInterval startTime = CACurrentMediaTime();
-        auto outputTuple = _impl.forward({ tensor }).toTuple();
+        
+        // 前向传播，返回 IValue（此处应为 Tensor 类型）
+        auto outputIValue = _impl.forward({ tensor });
+        
         CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
         NSLog(@"inference time:%f", elapsedTime);
 
-        auto outputTensor = outputTuple->elements()[0].toTensor();  // 形状应为 {1, 1, 768, 1024}
+        // 直接转换为 Tensor
+        auto outputTensor = outputIValue.toTensor();
+
         float* floatBuffer = outputTensor.data_ptr<float>();
         if (!floatBuffer) return nil;
 
@@ -86,6 +91,7 @@ const int output_size = output_width * output_height;  // 786432
             [results addObject:@(floatBuffer[i])];
         }
         return [results copy];
+        
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
         return nil;
