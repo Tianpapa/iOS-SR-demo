@@ -17,21 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SRR-fU-drQ">
-                                <rect key="frame" x="0.0" y="250" width="414" height="414"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRR-fU-drQ">
+                                <rect key="frame" x="0.0" y="80" width="512" height="640"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="414" id="91b-dW-d6L"/>
+                                    <constraint firstAttribute="height" constant="640" id="91b-dW-d6L"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5T-Eu-U1r">
-                                <rect key="frame" x="247" y="689" width="142" height="35"/>
+                                <rect key="frame" x="247" y="825" width="142" height="35"/>
                                 <state key="normal" title="Running the model..."/>
                                 <connections>
                                     <action selector="runTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nDQ-kn-r2l"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="835-pY-WUQ">
-                                <rect key="frame" x="100" y="689" width="139" height="35"/>
+                                <rect key="frame" x="100" y="825" width="139" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Mtx-7w-1By"/>
                                     <constraint firstAttribute="width" constant="139" id="dk8-4E-xHp"/>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOC-XB-vDL">
-                                <rect key="frame" x="50" y="744" width="110" height="30"/>
+                                <rect key="frame" x="50" y="880" width="110" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="u6p-wo-YZb"/>
                                 </constraints>
@@ -53,7 +53,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-Yr-ype">
-                                <rect key="frame" x="200" y="744" width="48" height="30"/>
+                                <rect key="frame" x="200" y="880" width="48" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="57C-Gz-qXn"/>
                                 </constraints>
@@ -63,7 +63,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnC-JU-BNk">
-                                <rect key="frame" x="293" y="739" width="54" height="30"/>
+                                <rect key="frame" x="293" y="875" width="54" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="mt5-Dh-6Bc"/>
                                 </constraints>
@@ -96,7 +96,7 @@
                             <constraint firstItem="SRR-fU-drQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yqn-0Q-sWL"/>
                             <constraint firstItem="rnC-JU-BNk" firstAttribute="leading" secondItem="Ngn-Yr-ype" secondAttribute="trailing" constant="45" id="ZIZ-l5-GOk"/>
                             <constraint firstItem="HOC-XB-vDL" firstAttribute="top" secondItem="835-pY-WUQ" secondAttribute="bottom" constant="20" id="ZQo-1k-mwA"/>
-                            <constraint firstItem="SRR-fU-drQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="k1r-XA-qbB"/>
+                            <constraint firstItem="SRR-fU-drQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="k1r-XA-qbB"/>
                             <constraint firstItem="x5T-Eu-U1r" firstAttribute="top" secondItem="SRR-fU-drQ" secondAttribute="bottom" constant="25" id="oip-GM-Bry"/>
                             <constraint firstItem="835-pY-WUQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="pvJ-GC-hVa"/>
                         </constraints>
