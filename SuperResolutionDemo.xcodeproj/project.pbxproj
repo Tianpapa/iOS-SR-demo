@@ -30,6 +30,10 @@
 		269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */; };
 		26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */; };
 		9866517B1327B244D5B05DF1 /* Pods_SuperResolutionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */; };
+		F11E99E22F55802E00BE9957 /* MNN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E12F55802E00BE9957 /* MNN.framework */; };
+		F11E99E62F55816100BE9957 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E32F55816100BE9957 /* Accelerate.framework */; };
+		F11E99E72F55816100BE9957 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E42F55816100BE9957 /* Metal.framework */; };
+		F11E99E82F55816100BE9957 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E52F55816100BE9957 /* CoreML.framework */; };
 		F17D91962F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +69,10 @@
 		8BF0B348976B1D05DE4E19DA /* Pods-ObjectDetection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.release.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.release.xcconfig"; sourceTree = "<group>"; };
 		9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperResolutionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3283DED73DDA4E4E022B11A /* Pods-SuperResolutionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperResolutionDemo.release.xcconfig"; path = "Target Support Files/Pods-SuperResolutionDemo/Pods-SuperResolutionDemo.release.xcconfig"; sourceTree = "<group>"; };
+		F11E99E12F55802E00BE9957 /* MNN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MNN.framework; sourceTree = "<group>"; };
+		F11E99E32F55816100BE9957 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		F11E99E42F55816100BE9957 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		F11E99E52F55816100BE9957 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +81,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11E99E62F55816100BE9957 /* Accelerate.framework in Frameworks */,
+				F11E99E72F55816100BE9957 /* Metal.framework in Frameworks */,
+				F11E99E82F55816100BE9957 /* CoreML.framework in Frameworks */,
+				F11E99E22F55802E00BE9957 /* MNN.framework in Frameworks */,
 				9866517B1327B244D5B05DF1 /* Pods_SuperResolutionDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +170,10 @@
 		6E1B7154C4F155CBA56C4A72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F11E99E32F55816100BE9957 /* Accelerate.framework */,
+				F11E99E52F55816100BE9957 /* CoreML.framework */,
+				F11E99E42F55816100BE9957 /* Metal.framework */,
+				F11E99E12F55802E00BE9957 /* MNN.framework */,
 				9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */,
 			);
 			name = Frameworks;
@@ -444,6 +460,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W6348QV2UJ;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SuperResolutionDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,6 +490,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W6348QV2UJ;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SuperResolutionDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
