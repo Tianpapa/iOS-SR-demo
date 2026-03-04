@@ -53,21 +53,83 @@ struct GpuCache {
     }
 };
 
-@interface Model : NSObject {
+// Objective-C 类扩展，声明私有属性（非 C++ 类型）
+@interface SRModel () {
     std::shared_ptr<MNN::Express::Executor::RuntimeManager> _rtmgr;
     std::shared_ptr<MNN::Express::Module> _module;
     std::shared_ptr<MNN::Interpreter> _net;
     MNN::Session *_session;
     std::mutex _mutex;
     MNNForwardType _type;
+    int _threads;
     MNN::Tensor* _input;
     MNN::Tensor* _output;
     std::shared_ptr<GpuCache> _cache;
+    
 }
-@property (strong, nonatomic) UIImage *defaultImage;
-@property (strong, nonatomic) NSArray<NSString *> *labels;
+@end
+
+@implementation SRModel
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        try {
+            //        NSString *labels  = [[NSBundle mainBundle] pathForResource:@"synset_words" ofType:@"txt"];
+            //        NSString *lines   = [NSString stringWithContentsOfFile:labels encoding:NSUTF8StringEncoding error:nil];
+            //        self.labels       = [lines componentsSeparatedByString:@"\n"];
+            //        self.defaultImage = [UIImage imageNamed:@"testcat.jpg"];
+            
+            NSString *model = [[NSBundle mainBundle] pathForResource:@"SPAN_x2_c32_e4495_384x512" ofType:@"mnn"];
+            _net            = std::shared_ptr<MNN::Interpreter>(MNN::Interpreter::createFromFile(model.UTF8String));
+            NSLog(@"Successfully load model from %s", model.UTF8String);
+            
+            // ★ 在这里调用 setType 设置默认后端和线程数
+            _type = MNN_FORWARD_NN;
+            _threads = 4;
+            [self setType:MNN_FORWARD_NN threads:_threads];
+            NSLog(@"Successfully init backend with type: %d", _type);
+            
+            
+        } catch (const std::exception& exception) {
+            NSLog(@"%s", exception.what());
+            return nil;
+        }
+    }
+    return self;
+}
+
+- (void)setType:(MNNForwardType)type threads:(NSUInteger)threads {
+    std::unique_lock<std::mutex> _l(_mutex);
+    if (_session) {
+        _net->releaseSession(_session);
+    }
+//    if (nullptr == _cache) {
+//        _cache.reset(new GpuCache);
+//    }
+    MNN::ScheduleConfig config;
+    config.type      = type;
+    config.numThread = (int)threads;
+    if (type == MNN_FORWARD_METAL) {
+        MNN::BackendConfig bnConfig;
+        MNNMetalSharedContext context;
+        context.device = _cache->_device;
+        context.queue = _cache->_queue;
+        bnConfig.sharedContext = &context;
+        config.backendConfig = &bnConfig;
+        _session = _net->createSession(config);
+    } else if (type == MNN_FORWARD_NN) {
+        _session = _net->createSession(config);
+    } else {
+        _session = _net->createSession(config);
+    }
+    _input = _net->getSessionInput(_session, nullptr);
+    _output = _net->getSessionOutput(_session, nullptr);
+    _type = type;
+}
+
 
 @end
+
 
 // 640x640 is the default image size used in the export.py in the yolov5 repo to export the TorchScript model, 25200*85 is the model output size
 // const int input_width = 640;

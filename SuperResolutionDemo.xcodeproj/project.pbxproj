@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,7 @@
 		F11E99E62F55816100BE9957 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E32F55816100BE9957 /* Accelerate.framework */; };
 		F11E99E72F55816100BE9957 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E42F55816100BE9957 /* Metal.framework */; };
 		F11E99E82F55816100BE9957 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E52F55816100BE9957 /* CoreML.framework */; };
+		F11E99EA2F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn in Resources */ = {isa = PBXBuildFile; fileRef = F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */; };
 		F17D91962F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		F11E99E32F55816100BE9957 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		F11E99E42F55816100BE9957 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		F11E99E52F55816100BE9957 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
+		F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_x2_c32_e4495_384x512.mnn; sourceTree = "<group>"; };
 		F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 				2669BE15270FA65200806A63 /* aicook3.jpg */,
 				266E87222563120D00CF5151 /* classes.txt */,
 				F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */,
+				F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */,
 			);
 			path = SuperResolutionDemo;
 			sourceTree = "<group>";
@@ -217,8 +220,9 @@
 		269E7466255CC56200B1D6CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					269E746D255CC56200B1D6CA = {
 						CreatedOnToolsVersion = 12.1;
@@ -252,6 +256,7 @@
 				269E747E255CC56400B1D6CA /* LaunchScreen.storyboard in Resources */,
 				2669BE18270FA65200806A63 /* aicook.txt in Resources */,
 				266E87232563120D00CF5151 /* classes.txt in Resources */,
+				F11E99EA2F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn in Resources */,
 				269E747B255CC56400B1D6CA /* Assets.xcassets in Resources */,
 				2669BE19270FA65200806A63 /* aicook1.jpg in Resources */,
 				269E748D255CC6D100B1D6CA /* test2.jpg in Resources */,
@@ -367,9 +372,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = W6348QV2UJ;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -389,6 +396,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -429,9 +437,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = W6348QV2UJ;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -444,6 +454,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -458,7 +469,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W6348QV2UJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -488,7 +498,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W6348QV2UJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
