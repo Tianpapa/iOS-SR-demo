@@ -86,7 +86,7 @@ struct GpuCache {
             // ★ 在这里调用 setType 设置默认后端和线程数
             _type = MNN_FORWARD_NN;
             _threads = 4;
-            [self setType:MNN_FORWARD_NN threads:_threads];
+            [self setType:_type threads:_threads];
             NSLog(@"Successfully init backend with type: %d", _type);
             
             
@@ -110,12 +110,12 @@ struct GpuCache {
     config.type      = type;
     config.numThread = (int)threads;
     if (type == MNN_FORWARD_METAL) {
-        MNN::BackendConfig bnConfig;
-        MNNMetalSharedContext context;
-        context.device = _cache->_device;
-        context.queue = _cache->_queue;
-        bnConfig.sharedContext = &context;
-        config.backendConfig = &bnConfig;
+//        MNN::BackendConfig bnConfig;
+//        MNNMetalSharedContext context;
+//        context.device = _cache->_device;
+//        context.queue = _cache->_queue;
+//        bnConfig.sharedContext = &context;
+//        config.backendConfig = &bnConfig;
         _session = _net->createSession(config);
     } else if (type == MNN_FORWARD_NN) {
         _session = _net->createSession(config);
