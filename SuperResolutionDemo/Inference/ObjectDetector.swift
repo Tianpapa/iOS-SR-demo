@@ -36,4 +36,11 @@ class SuperResolutionModel {
             fatalError("Failed to load model!")
         }
     }()
+    lazy var model: SRModel = {
+        if let model = SRModel() {
+            return model
+        } else {
+            fatalError("Failed to load model!")
+        }
+    }()
 }

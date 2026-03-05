@@ -74,7 +74,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let pointer = UnsafeMutableRawPointer(mutating: baseAddress)
             
             DispatchQueue.global().async {
-                guard let outputs = self.inferencer.module.upscale(image: pointer) else {
+                guard let outputs = self.inferencer.model.upscale(image: pointer) else {
                     DispatchQueue.main.async {
                         self.btnRun.isEnabled = true
                         self.btnRun.setTitle("Run SR", for: .normal)

@@ -23,10 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SRModel : NSObject
 
-//- (nullable instancetype)initWithFileAtPath:(NSString*)filePath
-//    NS_SWIFT_NAME(init(fileAtPath:))NS_DESIGNATED_INITIALIZER;
-//+ (instancetype)new NS_UNAVAILABLE;
-//- (instancetype)init NS_UNAVAILABLE;
+- (nullable instancetype)initMNN
+    NS_SWIFT_NAME(init())NS_DESIGNATED_INITIALIZER;
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 - (nullable NSArray<NSNumber*>*)upscaleImage:(void*)imageBuffer NS_SWIFT_NAME(upscale(image:));
 
 @end

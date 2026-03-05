@@ -70,7 +70,7 @@ struct GpuCache {
 @end
 
 @implementation SRModel
-- (instancetype)init {
+- (nullable instancetype)initMNN {
     self = [super init];
     if (self) {
         try {
@@ -127,6 +127,78 @@ struct GpuCache {
     _type = type;
 }
 
+- (nullable NSArray<NSNumber*>*)upscaleImage:(void*)imageBuffer {
+    // 使用 C++ 的 lock_guard 加锁
+    std::lock_guard<std::mutex> lock(_mutex);
+
+    if (!_session || !_input || !_output) {
+        NSLog(@"Session or input/output not ready");
+        return nil;
+    }
+
+    // 记录总开始时间
+    CFTimeInterval totalStart = CACurrentMediaTime();
+    CFTimeInterval inputStart, inputEnd, inferenceStart, inferenceEnd, outputStart, outputEnd;
+
+    try {
+        // ---- 输入处理 ----
+        inputStart = CACurrentMediaTime();
+        int inputSize = _input->elementSize();
+        MNN::Tensor hostInput(_input, MNN::Tensor::CAFFE);
+        float* hostInputData = hostInput.host<float>();
+        if (!hostInputData) {
+            NSLog(@"Failed to get host input data");
+            return nil;
+        }
+        memcpy(hostInputData, imageBuffer, inputSize * sizeof(float));
+        _input->copyFromHostTensor(&hostInput);
+        inputEnd = CACurrentMediaTime();
+
+        // ---- 推理 ----
+        inferenceStart = CACurrentMediaTime();
+        _net->runSession(_session);
+        inferenceEnd = CACurrentMediaTime();
+
+        // ---- 输出处理 ----
+        outputStart = CACurrentMediaTime();
+        MNN::Tensor hostOutput(_output, MNN::Tensor::CAFFE);
+        _output->copyToHostTensor(&hostOutput);
+        float* outputData = hostOutput.host<float>();
+        if (!outputData) {
+            NSLog(@"Failed to get host output data");
+            return nil;
+        }
+
+        // 转换为 NSArray
+        int outputSize = hostOutput.elementSize();
+        NSMutableArray* results = [NSMutableArray arrayWithCapacity:outputSize];
+        for (int i = 0; i < outputSize; i++) {
+            [results addObject:@(outputData[i])];
+        }
+        outputEnd = CACurrentMediaTime();
+
+        CFTimeInterval totalEnd = CACurrentMediaTime();
+
+        // 计算耗时（毫秒）
+        double inputTime = (inputEnd - inputStart) * 1000.0;
+        double inferenceTime = (inferenceEnd - inferenceStart) * 1000.0;
+        double outputTime = (outputEnd - outputStart) * 1000.0;
+        double totalTime = (totalEnd - totalStart) * 1000.0;
+
+        // 在一行输出
+        NSLog(@"[Performance] input: %.3f ms, inference: %.3f ms, output: %.3f ms, total: %.3f ms",
+              inputTime, inferenceTime, outputTime, totalTime);
+
+        return [results copy];
+
+    } catch (const std::exception& exception) {
+        NSLog(@"C++ exception in upscaleImage: %s", exception.what());
+        return nil;
+    } catch (...) {
+        NSLog(@"Unknown exception in upscaleImage");
+        return nil;
+    }
+}
 
 @end
 
@@ -191,22 +263,25 @@ const int output_size = output_width * output_height;  // 786432
 }
 
 - (NSArray<NSNumber*>*)upscaleImage:(void*)imageBuffer {
+    CFTimeInterval totalStart = CACurrentMediaTime();
+    CFTimeInterval inputStart, inputEnd, inferenceStart, inferenceEnd, outputStart, outputEnd;
+
     try {
-        // 输入张量：形状 {1, 1, input_height, input_width}
+        // ---- 输入处理 ----
+        inputStart = CACurrentMediaTime();
         at::Tensor tensor = torch::from_blob(imageBuffer, {1, 1, input_height, input_width}, at::kFloat);
+        inputEnd = CACurrentMediaTime();
 
         c10::InferenceMode guard;
-        CFTimeInterval startTime = CACurrentMediaTime();
-        
-        // 前向传播，返回 IValue（此处应为 Tensor 类型）
+
+        // ---- 推理 ----
+        inferenceStart = CACurrentMediaTime();
         auto outputIValue = _impl.forward({ tensor });
-        
-        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-        NSLog(@"inference time:%f", elapsedTime);
+        inferenceEnd = CACurrentMediaTime();
 
-        // 直接转换为 Tensor
+        // ---- 输出处理 ----
+        outputStart = CACurrentMediaTime();
         auto outputTensor = outputIValue.toTensor();
-
         float* floatBuffer = outputTensor.data_ptr<float>();
         if (!floatBuffer) return nil;
 
@@ -214,8 +289,21 @@ const int output_size = output_width * output_height;  // 786432
         for (int i = 0; i < output_size; i++) {
             [results addObject:@(floatBuffer[i])];
         }
+        outputEnd = CACurrentMediaTime();
+
+        CFTimeInterval totalEnd = CACurrentMediaTime();
+
+        // 计算耗时（毫秒）
+        double inputTime = (inputEnd - inputStart) * 1000.0;
+        double inferenceTime = (inferenceEnd - inferenceStart) * 1000.0;
+        double outputTime = (outputEnd - outputStart) * 1000.0;
+        double totalTime = (totalEnd - totalStart) * 1000.0;
+
+        NSLog(@"[Performance LibTorch] input: %.3f ms, inference: %.3f ms, output: %.3f ms, total: %.3f ms",
+              inputTime, inferenceTime, outputTime, totalTime);
+
         return [results copy];
-        
+
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
         return nil;
