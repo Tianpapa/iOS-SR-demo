@@ -127,7 +127,7 @@ struct GpuCache {
     _type = type;
 }
 
-- (nullable NSArray<NSNumber*>*)upscaleImage:(void*)imageBuffer {
+- (nullable NSData *)upscaleImage:(void*)imageBuffer {
     // 使用 C++ 的 lock_guard 加锁
     std::lock_guard<std::mutex> lock(_mutex);
 
@@ -171,10 +171,13 @@ struct GpuCache {
 
         // 转换为 NSArray
         int outputSize = hostOutput.elementSize();
-        NSMutableArray* results = [NSMutableArray arrayWithCapacity:outputSize];
-        for (int i = 0; i < outputSize; i++) {
-            [results addObject:@(outputData[i])];
-        }
+//        NSMutableArray* results = [NSMutableArray arrayWithCapacity:outputSize];
+//        for (int i = 0; i < outputSize; i++) {
+//            [results addObject:@(outputData[i])];
+//        }
+        // ★ 关键修改：用 NSData 包装原始浮点数据（拷贝数据，避免 hostOutput 释放后指针失效）
+        NSData *resultData = [NSData dataWithBytes:outputData length:outputSize * sizeof(float)];
+        
         outputEnd = CACurrentMediaTime();
 
         CFTimeInterval totalEnd = CACurrentMediaTime();
@@ -189,7 +192,7 @@ struct GpuCache {
         NSLog(@"[Performance] input: %.3f ms, inference: %.3f ms, output: %.3f ms, total: %.3f ms",
               inputTime, inferenceTime, outputTime, totalTime);
 
-        return [results copy];
+        return resultData;
 
     } catch (const std::exception& exception) {
         NSLog(@"C++ exception in upscaleImage: %s", exception.what());

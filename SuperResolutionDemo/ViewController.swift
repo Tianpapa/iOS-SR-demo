@@ -74,18 +74,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let pointer = UnsafeMutableRawPointer(mutating: baseAddress)
             
             DispatchQueue.global().async {
-                guard let outputs = self.inferencer.model.upscale(image: pointer) else {
+                guard let outputNSData = self.inferencer.model.upscale(image: pointer) else {
                     DispatchQueue.main.async {
                         self.btnRun.isEnabled = true
                         self.btnRun.setTitle("Run SR", for: .normal)
                     }
                     return
                 }
+                // 将 NSData 转换为 Data
+                let outputData = outputNSData as Data
                 
                 let outputImage = PrePostProcessor.outputsToUIImage(
-                    outputs: outputs,
+                    data: outputData,
                     width: PrePostProcessor.outputWidth,
-                    height: PrePostProcessor.outputHeight
+                    height: PrePostProcessor.outputHeight		
                 )
                 
                 DispatchQueue.main.async {

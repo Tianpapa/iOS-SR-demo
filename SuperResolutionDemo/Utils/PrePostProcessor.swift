@@ -56,6 +56,46 @@ class PrePostProcessor : NSObject {
         return UIImage(cgImage: cgImage)
     }
     
+    static func outputsToUIImage(data: Data, width: Int, height: Int) -> UIImage? {
+        // 检查数据长度是否正确
+        guard data.count == width * height * MemoryLayout<Float>.size else {
+            print("输出数据大小不匹配")
+            return nil
+        }
+        
+        // 将 Float 值（0~1）转换为 UInt8（0~255）
+        var pixels = [UInt8](repeating: 0, count: width * height)
+        data.withUnsafeBytes { (ptr: UnsafeRawBufferPointer) in
+            let floatPtr = ptr.bindMemory(to: Float.self).baseAddress!
+            for i in 0..<width * height {
+                let val = floatPtr[i] * 255.0
+                pixels[i] = UInt8(max(0, min(255, val)))
+            }
+        }
+        
+        // 创建灰度图 CGImage
+        let colorSpace = CGColorSpaceCreateDeviceGray()
+        let bytesPerRow = width
+        let bitmapInfo = CGImageAlphaInfo.none.rawValue
+        
+        guard let dataProvider = CGDataProvider(data: Data(pixels) as CFData) else { return nil }
+        guard let cgImage = CGImage(
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bitsPerPixel: 8,
+            bytesPerRow: bytesPerRow,
+            space: colorSpace,
+            bitmapInfo: CGBitmapInfo(rawValue: bitmapInfo),
+            provider: dataProvider,
+            decode: nil,
+            shouldInterpolate: false,
+            intent: .defaultIntent
+        ) else { return nil }
+        
+        return UIImage(cgImage: cgImage)
+    }
+    
     // 清理之前绘制的图像（如果之前有叠加层，可以保留此方法用于重置）
     static func cleanDetection(imageView: UIImageView) {
         // 对于超分，通常不需要清理，但如果你在 imageView 上叠加了其他视图，可以保留
