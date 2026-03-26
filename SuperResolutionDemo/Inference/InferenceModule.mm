@@ -5,7 +5,6 @@
 // LICENSE file in the root directory of this source tree.
 
 #import "InferenceModule.h"
-#import <Libtorch-Lite/Libtorch-Lite.h>
 #import <Metal/Metal.h>
 
 #import <AVFoundation/AVFoundation.h>
@@ -218,99 +217,3 @@ const int output_width = 768;
 const int output_height = 1024;
 const int output_size = output_width * output_height;  // 786432
 
-
-@implementation InferenceModule {
-    @protected torch::jit::mobile::Module _impl;
-}
-
-- (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
-    self = [super init];
-    if (self) {
-        try {
-            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
-        } catch (const std::exception& exception) {
-            NSLog(@"%s", exception.what());
-            return nil;
-        }
-    }
-    return self;
-}
-
-- (NSArray<NSNumber*>*)detectImage:(void*)imageBuffer {
-    try {
-        at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, input_height, input_width }, at::kFloat);
-
-        c10::InferenceMode guard;
-        CFTimeInterval startTime = CACurrentMediaTime();
-        auto outputTuple = _impl.forward({ tensor }).toTuple();
-        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-        NSLog(@"inference time:%f", elapsedTime);
-
-        auto outputTensor = outputTuple->elements()[0].toTensor();
-
-        float* floatBuffer = outputTensor.data_ptr<float>();
-        if (!floatBuffer) {
-            return nil;
-        }
-        
-        NSMutableArray* results = [[NSMutableArray alloc] init];
-        for (int i = 0; i < output_size; i++) {
-          [results addObject:@(floatBuffer[i])];
-        }
-        return [results copy];
-        
-    } catch (const std::exception& exception) {
-        NSLog(@"%s", exception.what());
-    }
-    return nil;
-}
-
-- (NSArray<NSNumber*>*)upscaleImage:(void*)imageBuffer {
-    CFTimeInterval totalStart = CACurrentMediaTime();
-    CFTimeInterval inputStart, inputEnd, inferenceStart, inferenceEnd, outputStart, outputEnd;
-
-    try {
-        // ---- 输入处理 ----
-        inputStart = CACurrentMediaTime();
-        at::Tensor tensor = torch::from_blob(imageBuffer, {1, 1, input_height, input_width}, at::kFloat);
-        inputEnd = CACurrentMediaTime();
-
-        c10::InferenceMode guard;
-
-        // ---- 推理 ----
-        inferenceStart = CACurrentMediaTime();
-        auto outputIValue = _impl.forward({ tensor });
-        inferenceEnd = CACurrentMediaTime();
-
-        // ---- 输出处理 ----
-        outputStart = CACurrentMediaTime();
-        auto outputTensor = outputIValue.toTensor();
-        float* floatBuffer = outputTensor.data_ptr<float>();
-        if (!floatBuffer) return nil;
-
-        NSMutableArray* results = [[NSMutableArray alloc] init];
-        for (int i = 0; i < output_size; i++) {
-            [results addObject:@(floatBuffer[i])];
-        }
-        outputEnd = CACurrentMediaTime();
-
-        CFTimeInterval totalEnd = CACurrentMediaTime();
-
-        // 计算耗时（毫秒）
-        double inputTime = (inputEnd - inputStart) * 1000.0;
-        double inferenceTime = (inferenceEnd - inferenceStart) * 1000.0;
-        double outputTime = (outputEnd - outputStart) * 1000.0;
-        double totalTime = (totalEnd - totalStart) * 1000.0;
-
-        NSLog(@"[Performance LibTorch] input: %.3f ms, inference: %.3f ms, output: %.3f ms, total: %.3f ms",
-              inputTime, inferenceTime, outputTime, totalTime);
-
-        return [results copy];
-
-    } catch (const std::exception& exception) {
-        NSLog(@"%s", exception.what());
-        return nil;
-    }
-}
-
-@end

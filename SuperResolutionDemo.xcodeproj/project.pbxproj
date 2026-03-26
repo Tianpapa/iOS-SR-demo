@@ -29,7 +29,6 @@
 		269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 269E7496255CCBA000B1D6CA /* InferenceModule.mm */; };
 		269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */; };
 		26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */; };
-		9866517B1327B244D5B05DF1 /* Pods_SuperResolutionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */; };
 		F11E99E22F55802E00BE9957 /* MNN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E12F55802E00BE9957 /* MNN.framework */; };
 		F11E99E62F55816100BE9957 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E32F55816100BE9957 /* Accelerate.framework */; };
 		F11E99E72F55816100BE9957 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E42F55816100BE9957 /* Metal.framework */; };
@@ -65,11 +64,6 @@
 		269E7497255CCBA000B1D6CA /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePostProcessor.swift; sourceTree = "<group>"; };
-		2A0FA3B3CC601F0EFA90D6CE /* Pods-SuperResolutionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperResolutionDemo.debug.xcconfig"; path = "Target Support Files/Pods-SuperResolutionDemo/Pods-SuperResolutionDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		34537605AF0692AFB928F012 /* Pods-ObjectDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.debug.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.debug.xcconfig"; sourceTree = "<group>"; };
-		8BF0B348976B1D05DE4E19DA /* Pods-ObjectDetection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.release.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.release.xcconfig"; sourceTree = "<group>"; };
-		9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperResolutionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3283DED73DDA4E4E022B11A /* Pods-SuperResolutionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperResolutionDemo.release.xcconfig"; path = "Target Support Files/Pods-SuperResolutionDemo/Pods-SuperResolutionDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F11E99E12F55802E00BE9957 /* MNN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MNN.framework; sourceTree = "<group>"; };
 		F11E99E32F55816100BE9957 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		F11E99E42F55816100BE9957 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -87,7 +81,6 @@
 				F11E99E72F55816100BE9957 /* Metal.framework in Frameworks */,
 				F11E99E82F55816100BE9957 /* CoreML.framework in Frameworks */,
 				F11E99E22F55802E00BE9957 /* MNN.framework in Frameworks */,
-				9866517B1327B244D5B05DF1 /* Pods_SuperResolutionDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +103,6 @@
 			children = (
 				269E7470255CC56200B1D6CA /* SuperResolutionDemo */,
 				269E746F255CC56200B1D6CA /* Products */,
-				A3F013A889E9B190698071B6 /* Pods */,
 				6E1B7154C4F155CBA56C4A72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -177,20 +169,8 @@
 				F11E99E52F55816100BE9957 /* CoreML.framework */,
 				F11E99E42F55816100BE9957 /* Metal.framework */,
 				F11E99E12F55802E00BE9957 /* MNN.framework */,
-				9083F7374F179A7E0D3E9007 /* Pods_SuperResolutionDemo.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A3F013A889E9B190698071B6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				34537605AF0692AFB928F012 /* Pods-ObjectDetection.debug.xcconfig */,
-				8BF0B348976B1D05DE4E19DA /* Pods-ObjectDetection.release.xcconfig */,
-				2A0FA3B3CC601F0EFA90D6CE /* Pods-SuperResolutionDemo.debug.xcconfig */,
-				A3283DED73DDA4E4E022B11A /* Pods-SuperResolutionDemo.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +180,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 269E7482255CC56400B1D6CA /* Build configuration list for PBXNativeTarget "SuperResolutionDemo" */;
 			buildPhases = (
-				8E8BAFE52BB1383E83260D46 /* [CP] Check Pods Manifest.lock */,
 				269E746A255CC56200B1D6CA /* Sources */,
 				269E746B255CC56200B1D6CA /* Frameworks */,
 				269E746C255CC56200B1D6CA /* Resources */,
@@ -270,31 +249,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8E8BAFE52BB1383E83260D46 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SuperResolutionDemo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		269E746A255CC56200B1D6CA /* Sources */ = {
@@ -463,12 +417,12 @@
 		};
 		269E7483255CC56400B1D6CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A0FA3B3CC601F0EFA90D6CE /* Pods-SuperResolutionDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W6348QV2UJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,12 +446,12 @@
 		};
 		269E7484255CC56400B1D6CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3283DED73DDA4E4E022B11A /* Pods-SuperResolutionDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W6348QV2UJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

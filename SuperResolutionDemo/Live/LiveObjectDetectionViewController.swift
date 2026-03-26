@@ -34,11 +34,11 @@ class LiveObjectDetectionViewController: ViewController {
             let currentTimestamp = CACurrentMediaTime()
             if (currentTimestamp - strongSelf.prevTimestampMs) * 1000 <= strongSelf.delayMs { return }
             strongSelf.prevTimestampMs = currentTimestamp
-            let startTime = CACurrentMediaTime()
-            guard let outputs = self?.inferencer.module.upscale(image: &pixelBuffer) else {
-                return
-            }
-            let inferenceTime = CACurrentMediaTime() - startTime
+//            let startTime = CACurrentMediaTime()
+//            guard let outputs = self?.inferencer.module.upscale(image: &pixelBuffer) else {
+//                return
+//            }
+//            let inferenceTime = CACurrentMediaTime() - startTime
                 
 //            DispatchQueue.main.async {
 //                let ivScaleX : Double =  Double(strongSelf.imageViewLive.frame.size.width / CGFloat(PrePostProcessor.inputWidth))

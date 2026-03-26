@@ -7,14 +7,6 @@
 import UIKit
 
 class ObjectDetector {
-    lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "yolov5s.torchscript", ofType: "ptl"),
-            let module = InferenceModule(fileAtPath: filePath) {
-            return module
-        } else {
-            fatalError("Failed to load model!")
-        }
-    }()
     
     lazy var classes: [String] = {
         if let filePath = Bundle.main.path(forResource: "classes", ofType: "txt"),
@@ -27,15 +19,6 @@ class ObjectDetector {
 }
 
 class SuperResolutionModel {
-    lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "SPAN_x2_c32_e4495_384x512_opt.torchscript", ofType: "ptl"),
-            let module = InferenceModule(fileAtPath: filePath) {
-            let kk = SRModel()
-            return module
-        } else {
-            fatalError("Failed to load model!")
-        }
-    }()
     lazy var model: SRModel = {
         if let model = SRModel() {
             return model
