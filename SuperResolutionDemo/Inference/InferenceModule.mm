@@ -83,7 +83,7 @@ struct GpuCache {
             NSLog(@"Successfully load model from %s", model.UTF8String);
             
             // ★ 在这里调用 setType 设置默认后端和线程数
-            _type = MNN_FORWARD_NN;
+            _type = MNN_FORWARD_OPENCL;
             _threads = 4;
             [self setType:_type threads:_threads];
             NSLog(@"Successfully init backend with type: %d", _type);

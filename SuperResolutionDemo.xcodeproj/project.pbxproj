@@ -34,7 +34,6 @@
 		F11E99E72F55816100BE9957 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E42F55816100BE9957 /* Metal.framework */; };
 		F11E99E82F55816100BE9957 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E52F55816100BE9957 /* CoreML.framework */; };
 		F11E99EA2F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn in Resources */ = {isa = PBXBuildFile; fileRef = F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */; };
-		F17D91962F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +68,6 @@
 		F11E99E42F55816100BE9957 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		F11E99E52F55816100BE9957 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_x2_c32_e4495_384x512.mnn; sourceTree = "<group>"; };
-		F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +134,6 @@
 				2669BE11270FA61000806A63 /* aicook2.jpg */,
 				2669BE15270FA65200806A63 /* aicook3.jpg */,
 				266E87222563120D00CF5151 /* classes.txt */,
-				F17D91952F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl */,
 				F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */,
 			);
 			path = SuperResolutionDemo;
@@ -243,7 +240,6 @@
 				269E7488255CC69400B1D6CA /* test1.png in Resources */,
 				269E7479255CC56200B1D6CA /* Main.storyboard in Resources */,
 				2669BE1A270FA65200806A63 /* aicook3.jpg in Resources */,
-				F17D91962F529A9600E695C0 /* SPAN_x2_c32_e4495_384x512_opt.torchscript.ptl in Resources */,
 				269E748C255CC6D100B1D6CA /* test3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
