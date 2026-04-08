@@ -6,17 +6,6 @@
 
 import UIKit
 
-class ObjectDetector {
-    
-    lazy var classes: [String] = {
-        if let filePath = Bundle.main.path(forResource: "classes", ofType: "txt"),
-            let classes = try? String(contentsOfFile: filePath) {
-            return classes.components(separatedBy: .newlines)
-        } else {
-            fatalError("classes file was not found.")
-        }
-    }()
-}
 
 class SuperResolutionModel {
     lazy var model: SRModel = {
@@ -25,5 +14,5 @@ class SuperResolutionModel {
         } else {
             fatalError("Failed to load model!")
         }
-    }()
+    }()	
 }

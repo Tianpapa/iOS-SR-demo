@@ -16,7 +16,7 @@
 		266E8747256350C000CF5151 /* CVPixelBuffer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */; };
 		266E8748256350C000CF5151 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8744256350C000CF5151 /* CameraPreviewView.swift */; };
 		266E8749256350C000CF5151 /* LiveObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8745256350C000CF5151 /* LiveObjectDetectionViewController.swift */; };
-		266E874D256359E900CF5151 /* ObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E874C256359E900CF5151 /* ObjectDetector.swift */; };
+		266E874D256359E900CF5151 /* SuperResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E874C256359E900CF5151 /* SuperResolution.swift */; };
 		269E7472255CC56200B1D6CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7471255CC56200B1D6CA /* AppDelegate.swift */; };
 		269E7474255CC56200B1D6CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7473255CC56200B1D6CA /* SceneDelegate.swift */; };
 		269E7476255CC56200B1D6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7475255CC56200B1D6CA /* ViewController.swift */; };
@@ -46,7 +46,7 @@
 		266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helper.swift"; sourceTree = "<group>"; };
 		266E8744256350C000CF5151 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		266E8745256350C000CF5151 /* LiveObjectDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveObjectDetectionViewController.swift; sourceTree = "<group>"; };
-		266E874C256359E900CF5151 /* ObjectDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetector.swift; sourceTree = "<group>"; };
+		266E874C256359E900CF5151 /* SuperResolution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperResolution.swift; sourceTree = "<group>"; };
 		269E746E255CC56200B1D6CA /* SuperResolutionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperResolutionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269E7471255CC56200B1D6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		269E7473255CC56200B1D6CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 				269E7497255CCBA000B1D6CA /* InferenceModule.h */,
 				269E7496255CCBA000B1D6CA /* InferenceModule.mm */,
 				269E7495255CCBA000B1D6CA /* SuperResolutionDemo-Bridging-Header.h */,
-				266E874C256359E900CF5151 /* ObjectDetector.swift */,
+				266E874C256359E900CF5151 /* SuperResolution.swift */,
 			);
 			path = Inference;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 				266E8749256350C000CF5151 /* LiveObjectDetectionViewController.swift in Sources */,
 				26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */,
 				269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */,
-				266E874D256359E900CF5151 /* ObjectDetector.swift in Sources */,
+				266E874D256359E900CF5151 /* SuperResolution.swift in Sources */,
 				269E7476255CC56200B1D6CA /* ViewController.swift in Sources */,
 				269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */,
 				269E7472255CC56200B1D6CA /* AppDelegate.swift in Sources */,
