@@ -29,28 +29,6 @@ struct PretreatInfo {
     float matrix[16];
 };
 
-struct GpuCache {
-    CVMetalTextureCacheRef _textureCache;
-    id<MTLDevice> _device;
-    id<MTLComputePipelineState> _pretreat;
-    id<MTLFunction> _function;
-    id<MTLBuffer> _constant;
-    id<MTLCommandQueue> _queue;
-    GpuCache() {
-        _device = MTLCreateSystemDefaultDevice();
-        CVReturn res = CVMetalTextureCacheCreate(nil, nil, _device, nil, &_textureCache);
-        FUNC_PRINT(res);
-        id<MTLLibrary> library = [_device newDefaultLibrary];
-        _function = [library newFunctionWithName:@"pretreat"];
-        NSError* error = nil;
-        _pretreat = [_device newComputePipelineStateWithFunction:_function error:&error];
-        _constant = [_device newBufferWithLength:sizeof(PretreatInfo) options:MTLCPUCacheModeDefaultCache];
-        _queue = [_device newCommandQueue];
-    }
-    ~ GpuCache() {
-        
-    }
-};
 
 // Objective-C 类扩展，声明私有属性（非 C++ 类型）
 @interface SRModel () {
@@ -63,7 +41,6 @@ struct GpuCache {
     int _threads;
     MNN::Tensor* _input;
     MNN::Tensor* _output;
-    std::shared_ptr<GpuCache> _cache;
     
 }
 @end
