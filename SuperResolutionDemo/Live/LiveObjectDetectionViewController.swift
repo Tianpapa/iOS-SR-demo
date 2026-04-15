@@ -16,7 +16,7 @@ class LiveObjectDetectionViewController: ViewController {
     private var prevTimestampMs: Double = 0.0
     private var cameraController = CameraController()
     private var imageViewLive =  UIImageView()
-    private var inferencer = SuperResolutionModel()
+    private var inferencer = SRModelBridge()
     
     override func viewDidLoad() {
         super.viewDidLoad()

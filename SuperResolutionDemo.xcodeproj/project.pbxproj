@@ -16,7 +16,6 @@
 		266E8747256350C000CF5151 /* CVPixelBuffer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */; };
 		266E8748256350C000CF5151 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8744256350C000CF5151 /* CameraPreviewView.swift */; };
 		266E8749256350C000CF5151 /* LiveObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8745256350C000CF5151 /* LiveObjectDetectionViewController.swift */; };
-		266E874D256359E900CF5151 /* SuperResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E874C256359E900CF5151 /* SuperResolution.swift */; };
 		269E7472255CC56200B1D6CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7471255CC56200B1D6CA /* AppDelegate.swift */; };
 		269E7474255CC56200B1D6CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7473255CC56200B1D6CA /* SceneDelegate.swift */; };
 		269E7476255CC56200B1D6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7475255CC56200B1D6CA /* ViewController.swift */; };
@@ -26,14 +25,15 @@
 		269E7488255CC69400B1D6CA /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 269E7487255CC69400B1D6CA /* test1.png */; };
 		269E748C255CC6D100B1D6CA /* test3.png in Resources */ = {isa = PBXBuildFile; fileRef = 269E748A255CC6D100B1D6CA /* test3.png */; };
 		269E748D255CC6D100B1D6CA /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 269E748B255CC6D100B1D6CA /* test2.jpg */; };
-		269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 269E7496255CCBA000B1D6CA /* InferenceModule.mm */; };
 		269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */; };
 		26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */; };
-		F11E99E22F55802E00BE9957 /* MNN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E12F55802E00BE9957 /* MNN.framework */; };
+		F11D128D2F88F169003AB2FC /* SuperResolutionModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11D128C2F88F113003AB2FC /* SuperResolutionModel.cpp */; };
+		F11D128F2F8A36F0003AB2FC /* SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn in Resources */ = {isa = PBXBuildFile; fileRef = F11D128E2F8A36F0003AB2FC /* SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn */; };
+		F11D12912F8E6BED003AB2FC /* MNN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11D12902F8E6BED003AB2FC /* MNN.framework */; };
+		F11D12942F8F6958003AB2FC /* SRModelBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = F11D12932F8F6954003AB2FC /* SRModelBridge.mm */; };
 		F11E99E62F55816100BE9957 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E32F55816100BE9957 /* Accelerate.framework */; };
 		F11E99E72F55816100BE9957 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E42F55816100BE9957 /* Metal.framework */; };
 		F11E99E82F55816100BE9957 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F11E99E52F55816100BE9957 /* CoreML.framework */; };
-		F11E99EA2F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn in Resources */ = {isa = PBXBuildFile; fileRef = F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +46,6 @@
 		266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helper.swift"; sourceTree = "<group>"; };
 		266E8744256350C000CF5151 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		266E8745256350C000CF5151 /* LiveObjectDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveObjectDetectionViewController.swift; sourceTree = "<group>"; };
-		266E874C256359E900CF5151 /* SuperResolution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperResolution.swift; sourceTree = "<group>"; };
 		269E746E255CC56200B1D6CA /* SuperResolutionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperResolutionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269E7471255CC56200B1D6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		269E7473255CC56200B1D6CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,15 +58,17 @@
 		269E748A255CC6D100B1D6CA /* test3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test3.png; sourceTree = "<group>"; };
 		269E748B255CC6D100B1D6CA /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
 		269E7495255CCBA000B1D6CA /* SuperResolutionDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuperResolutionDemo-Bridging-Header.h"; sourceTree = "<group>"; };
-		269E7496255CCBA000B1D6CA /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
-		269E7497255CCBA000B1D6CA /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePostProcessor.swift; sourceTree = "<group>"; };
-		F11E99E12F55802E00BE9957 /* MNN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MNN.framework; sourceTree = "<group>"; };
+		F11D12872F87C747003AB2FC /* SuperResolutionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperResolutionModel.h; sourceTree = "<group>"; };
+		F11D128C2F88F113003AB2FC /* SuperResolutionModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SuperResolutionModel.cpp; sourceTree = "<group>"; };
+		F11D128E2F8A36F0003AB2FC /* SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn; sourceTree = SOURCE_ROOT; };
+		F11D12902F8E6BED003AB2FC /* MNN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MNN.framework; sourceTree = "<group>"; };
+		F11D12922F8F6933003AB2FC /* SRModelBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRModelBridge.h; sourceTree = "<group>"; };
+		F11D12932F8F6954003AB2FC /* SRModelBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SRModelBridge.mm; sourceTree = "<group>"; };
 		F11E99E32F55816100BE9957 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		F11E99E42F55816100BE9957 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		F11E99E52F55816100BE9957 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
-		F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPAN_x2_c32_e4495_384x512.mnn; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +78,8 @@
 			files = (
 				F11E99E62F55816100BE9957 /* Accelerate.framework in Frameworks */,
 				F11E99E72F55816100BE9957 /* Metal.framework in Frameworks */,
+				F11D12912F8E6BED003AB2FC /* MNN.framework in Frameworks */,
 				F11E99E82F55816100BE9957 /* CoreML.framework in Frameworks */,
-				F11E99E22F55802E00BE9957 /* MNN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +135,7 @@
 				2669BE11270FA61000806A63 /* aicook2.jpg */,
 				2669BE15270FA65200806A63 /* aicook3.jpg */,
 				266E87222563120D00CF5151 /* classes.txt */,
-				F11E99E92F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn */,
+				F11D128E2F8A36F0003AB2FC /* SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn */,
 			);
 			path = SuperResolutionDemo;
 			sourceTree = "<group>";
@@ -142,10 +143,11 @@
 		26FAB56C256700A600EA6ED6 /* Inference */ = {
 			isa = PBXGroup;
 			children = (
-				269E7497255CCBA000B1D6CA /* InferenceModule.h */,
-				269E7496255CCBA000B1D6CA /* InferenceModule.mm */,
+				F11D12932F8F6954003AB2FC /* SRModelBridge.mm */,
+				F11D12922F8F6933003AB2FC /* SRModelBridge.h */,
+				F11D128C2F88F113003AB2FC /* SuperResolutionModel.cpp */,
+				F11D12872F87C747003AB2FC /* SuperResolutionModel.h */,
 				269E7495255CCBA000B1D6CA /* SuperResolutionDemo-Bridging-Header.h */,
-				266E874C256359E900CF5151 /* SuperResolution.swift */,
 			);
 			path = Inference;
 			sourceTree = "<group>";
@@ -165,7 +167,7 @@
 				F11E99E32F55816100BE9957 /* Accelerate.framework */,
 				F11E99E52F55816100BE9957 /* CoreML.framework */,
 				F11E99E42F55816100BE9957 /* Metal.framework */,
-				F11E99E12F55802E00BE9957 /* MNN.framework */,
+				F11D12902F8E6BED003AB2FC /* MNN.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -232,9 +234,9 @@
 				269E747E255CC56400B1D6CA /* LaunchScreen.storyboard in Resources */,
 				2669BE18270FA65200806A63 /* aicook.txt in Resources */,
 				266E87232563120D00CF5151 /* classes.txt in Resources */,
-				F11E99EA2F581C0600BE9957 /* SPAN_x2_c32_e4495_384x512.mnn in Resources */,
 				269E747B255CC56400B1D6CA /* Assets.xcassets in Resources */,
 				2669BE19270FA65200806A63 /* aicook1.jpg in Resources */,
+				F11D128F2F8A36F0003AB2FC /* SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn in Resources */,
 				269E748D255CC6D100B1D6CA /* test2.jpg in Resources */,
 				2669BE16270FA65200806A63 /* aicook2.jpg in Resources */,
 				269E7488255CC69400B1D6CA /* test1.png in Resources */,
@@ -251,12 +253,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11D12942F8F6958003AB2FC /* SRModelBridge.mm in Sources */,
 				266E8748256350C000CF5151 /* CameraPreviewView.swift in Sources */,
+				F11D128D2F88F169003AB2FC /* SuperResolutionModel.cpp in Sources */,
 				266E8746256350C000CF5151 /* CameraController.swift in Sources */,
 				266E8749256350C000CF5151 /* LiveObjectDetectionViewController.swift in Sources */,
 				26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */,
-				269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */,
-				266E874D256359E900CF5151 /* SuperResolution.swift in Sources */,
 				269E7476255CC56200B1D6CA /* ViewController.swift in Sources */,
 				269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */,
 				269E7472255CC56200B1D6CA /* AppDelegate.swift in Sources */,
