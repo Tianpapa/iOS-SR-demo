@@ -10,6 +10,7 @@
 #include <cstring>
 #include <iostream>
 #include <iomanip>
+#include <Accelerate/Accelerate.h> 
 
 SuperResolutionModel::SuperResolutionModel() = default;
 
@@ -174,9 +175,7 @@ bool SuperResolutionModel::upscaleImage(const unsigned char* inputImage, unsigne
     auto t_conv_in_start = Clock::now();
     float* hostInPtr = hostInput_->host<float>();
     if (!hostInPtr) return false;
-    for (size_t i = 0; i < inputSize(); ++i) {
-        hostInPtr[i] = static_cast<float>(inputImage[i]);
-    }
+    vDSP_vfltu8(inputImage, 1, hostInPtr, 1, inputSize());
     auto t_conv_in_end = Clock::now();
 
     // ---------- 2. 拷贝到设备 ----------
@@ -203,9 +202,7 @@ bool SuperResolutionModel::upscaleImage(const unsigned char* inputImage, unsigne
     auto t_conv_out_start = Clock::now();
     float* hostOutPtr = hostOutput_->host<float>();
     if (!hostOutPtr) return false;
-    for (size_t i = 0; i < outputSize(); ++i) {
-        outputImage[i] = static_cast<unsigned char>(hostOutPtr[i]);
-    }
+    vDSP_vfixu8(hostOutPtr, 1, outputImage, 1, outputSize());
     auto t_conv_out_end = Clock::now();
 
     auto t_total_end = Clock::now();
