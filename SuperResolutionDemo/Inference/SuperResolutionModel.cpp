@@ -9,6 +9,7 @@
 #include <chrono>
 #include <cstring>
 #include <iostream>
+#include <iomanip>
 
 SuperResolutionModel::SuperResolutionModel() = default;
 
@@ -218,12 +219,9 @@ bool SuperResolutionModel::upscaleImage(const unsigned char* inputImage, unsigne
     double conv_out_ms = std::chrono::duration_cast<ms>(t_conv_out_end - t_conv_out_start).count();
     double total_ms    = std::chrono::duration_cast<ms>(t_total_end    - t_total_start).count();
 
-    std::cout << "[SRModel] ConvIn: " << conv_in_ms << " ms, "
-              << "CopyIn: " << copy_in_ms << " ms, "
-              << "Infer: " << infer_ms << " ms, "
-              << "CopyOut: " << copy_out_ms << " ms, "
-              << "ConvOut: " << conv_out_ms << " ms, "
-              << "Total: " << total_ms << " ms" << std::endl;
+    std::cout << std::fixed << std::setprecision(4) << "[SRModel] ConvIn: "
+              << conv_in_ms << " | " << copy_in_ms << " | " << infer_ms << " | "
+              << copy_out_ms << " | " << conv_out_ms << " | " << total_ms << std::endl;
 
     return true;
 }

@@ -22,12 +22,24 @@ namespace MNN {
 
 /**
  * 超分辨率模型推理类（基于 MNN Interpreter）
- *
- * 使用方式：
- *   1. SuperResolutionModel model;
- *   2. model.init("path/to/model.mnn", MNN_FORWARD_NN, 4);
- *   3. model.setBackend(MNN_FORWARD_METAL, 4);
- *   4. std::vector<float> output = model.upscale(inputFloatArray);
+
+ * C++调用示例
+  
+  SuperResolutionModel model;
+  model.init("SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn", MNN_FORWARD_NN, 4);
+
+  // 预分配输入输出字节缓冲区
+  std::vector<unsigned char> inputImage(model.inputSize());
+  std::vector<unsigned char> outputImage(model.outputSize());
+
+  // 填充输入图像数据
+  // ...
+
+  // 推理
+  if (model.upscaleImage(inputImage.data(), outputImage.data())) {
+      // 使用 outputImage.data()
+  }
+
  */
 class SuperResolutionModel {
 public:
@@ -109,6 +121,4 @@ private:
 
     void releaseSession();
     bool createSession();
-    bool copyInput(const float* data);
-    std::vector<float> copyOutput();
 };

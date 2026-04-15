@@ -5,7 +5,7 @@
 //  Created by Rick.Liang on 2026/4/13.
 //
 #import "SRModelBridge.h"
-#import "SuperResolutionModel.h"   // 你的 C++ 头文件
+#import "SuperResolutionModel.h"
 
 @interface SRModelBridge () {
     std::unique_ptr<SuperResolutionModel> _model;
