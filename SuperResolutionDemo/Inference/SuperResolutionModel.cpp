@@ -10,7 +10,16 @@
 #include <cstring>
 #include <iostream>
 #include <iomanip>
-#include <Accelerate/Accelerate.h> 
+#include <Accelerate/Accelerate.h>
+
+// 自定义日志宏：仅在 Debug 模式下输出
+#ifndef NDEBUG
+#define LOGD(x) std::cout << x
+#define LOGE(x) std::cerr << x
+#else
+#define LOGD(x) ((void)0)
+#define LOGE(x) ((void)0)
+#endif
 
 SuperResolutionModel::SuperResolutionModel() = default;
 
@@ -34,10 +43,10 @@ bool SuperResolutionModel::init(const std::string& modelPath,
 
     net_.reset(MNN::Interpreter::createFromFile(modelPath.c_str()));
     if (!net_) {
-        std::cerr << "[SRModel] Failed to load model from: " << modelPath << std::endl;
+        LOGE("[SRModel] Failed to load model from: " << modelPath << std::endl);
         return false;
     }
-    std::cout << "[SRModel] Model loaded: " << modelPath << std::endl;
+    LOGD("[SRModel] Model loaded: " << modelPath << std::endl);
 
     backendType_ = type;
     numThreads_  = numThreads;
@@ -66,7 +75,7 @@ bool SuperResolutionModel::createSession() {
 
     session_ = net_->createSession(config);
     if (!session_) {
-        std::cerr << "[SRModel] Failed to create session for backend " << backendType_ << std::endl;
+        LOGE("[SRModel] Failed to create session for backend " << backendType_ << std::endl);
         return false;
     }
 
@@ -74,7 +83,7 @@ bool SuperResolutionModel::createSession() {
     MNN::Tensor* inputTensor  = net_->getSessionInput(session_, nullptr);
     MNN::Tensor* outputTensor = net_->getSessionOutput(session_, nullptr);
     if (!inputTensor || !outputTensor) {
-        std::cerr << "[SRModel] Failed to get input/output tensors" << std::endl;
+        LOGE("[SRModel] Failed to get input/output tensors" << std::endl);
         return false;
     }
 
@@ -86,12 +95,12 @@ bool SuperResolutionModel::createSession() {
     auto shape = inputTensor->shape();
     if (shape.size() != 4 || shape[0] != 1 || shape[1] != kChannels ||
         shape[2] != kInputHeight || shape[3] != kInputWidth) {
-        std::cerr << "[SRModel] Warning: input tensor shape mismatch. Expected 1x"
-                  << kChannels << "x" << kInputHeight << "x" << kInputWidth << std::endl;
+        LOGE("[SRModel] Warning: input tensor shape mismatch. Expected 1x"
+                  << kChannels << "x" << kInputHeight << "x" << kInputWidth << std::endl);
     }
 
-    std::cout << "[SRModel] Session created. Backend: " << backendType_
-              << ", Threads: " << numThreads_ << std::endl;
+    LOGD("[SRModel] Session created. Backend: " << backendType_
+              << ", Threads: " << numThreads_ << std::endl);
     return true;
 }
 
@@ -99,11 +108,11 @@ bool SuperResolutionModel::upscaleFloat(const float* inputData, float* outputDat
     std::lock_guard<std::mutex> lock(mutex_);
 
     if (!isReady()) {
-        std::cerr << "[SRModel] Model not ready" << std::endl;
+        LOGE("[SRModel] Model not ready" << std::endl);
         return false;
     }
     if (!inputData || !outputData) {
-        std::cerr << "[SRModel] inputData or outputData is null" << std::endl;
+        LOGE("[SRModel] inputData or outputData is null" << std::endl);
         return false;
     }
 
@@ -124,7 +133,7 @@ bool SuperResolutionModel::upscaleFloat(const float* inputData, float* outputDat
     // 3. 推理
     auto t_infer = Clock::now();
     if (net_->runSession(session_) != MNN::NO_ERROR) {
-        std::cerr << "[SRModel] Inference error" << std::endl;
+        LOGE("[SRModel] Inference error" << std::endl);
         return false;
     }
     auto t_infer_done = Clock::now();
@@ -148,10 +157,10 @@ bool SuperResolutionModel::upscaleFloat(const float* inputData, float* outputDat
     double output_ms = std::chrono::duration_cast<ms>(t_output_done - t_output).count();
     double total_ms  = std::chrono::duration_cast<ms>(t_total_done - t_total).count();
 
-    std::cout << "[SRModel] Input: " << input_ms << " ms, "
+    LOGD("[SRModel] Input: " << input_ms << " ms, "
               << "Inference: " << infer_ms << " ms, "
               << "Output: " << output_ms << " ms, "
-              << "Total: " << total_ms << " ms" << std::endl;
+              << "Total: " << total_ms << " ms" << std::endl);
 
     return true;
 }
@@ -160,11 +169,11 @@ bool SuperResolutionModel::upscaleImage(const unsigned char* inputImage, unsigne
     std::lock_guard<std::mutex> lock(mutex_);
 
     if (!isReady()) {
-        std::cerr << "[SRModel] Model not ready" << std::endl;
+        LOGE("[SRModel] Model not ready" << std::endl);
         return false;
     }
     if (!inputImage || !outputImage) {
-        std::cerr << "[SRModel] inputImage or outputImage is null" << std::endl;
+        LOGE("[SRModel] inputImage or outputImage is null" << std::endl);
         return false;
     }
 
@@ -187,7 +196,7 @@ bool SuperResolutionModel::upscaleImage(const unsigned char* inputImage, unsigne
     // ---------- 3. 推理 ----------
     auto t_infer_start = Clock::now();
     if (net_->runSession(session_) != MNN::NO_ERROR) {
-        std::cerr << "[SRModel] Inference error" << std::endl;
+        LOGE("[SRModel] Inference error" << std::endl);
         return false;
     }
     auto t_infer_end = Clock::now();
@@ -216,9 +225,9 @@ bool SuperResolutionModel::upscaleImage(const unsigned char* inputImage, unsigne
     double conv_out_ms = std::chrono::duration_cast<ms>(t_conv_out_end - t_conv_out_start).count();
     double total_ms    = std::chrono::duration_cast<ms>(t_total_end    - t_total_start).count();
 
-    std::cout << std::fixed << std::setprecision(4) << "[SRModel] ConvIn: "
+    LOGD(std::fixed << std::setprecision(4) << "[SRModel] ConvIn: "
               << conv_in_ms << " | " << copy_in_ms << " | " << infer_ms << " | "
-              << copy_out_ms << " | " << conv_out_ms << " | " << total_ms << std::endl;
+              << copy_out_ms << " | " << conv_out_ms << " | " << total_ms << std::endl);
 
     return true;
 }
