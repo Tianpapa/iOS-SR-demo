@@ -11,7 +11,6 @@
 		2669BE18270FA65200806A63 /* aicook.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2669BE13270FA62F00806A63 /* aicook.txt */; };
 		2669BE19270FA65200806A63 /* aicook1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2669BE14270FA63D00806A63 /* aicook1.jpg */; };
 		2669BE1A270FA65200806A63 /* aicook3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2669BE15270FA65200806A63 /* aicook3.jpg */; };
-		266E87232563120D00CF5151 /* classes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 266E87222563120D00CF5151 /* classes.txt */; };
 		266E8746256350C000CF5151 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8742256350C000CF5151 /* CameraController.swift */; };
 		266E8747256350C000CF5151 /* CVPixelBuffer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */; };
 		266E8748256350C000CF5151 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8744256350C000CF5151 /* CameraPreviewView.swift */; };
@@ -41,7 +40,6 @@
 		2669BE13270FA62F00806A63 /* aicook.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aicook.txt; sourceTree = "<group>"; };
 		2669BE14270FA63D00806A63 /* aicook1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aicook1.jpg; sourceTree = "<group>"; };
 		2669BE15270FA65200806A63 /* aicook3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aicook3.jpg; sourceTree = "<group>"; };
-		266E87222563120D00CF5151 /* classes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classes.txt; sourceTree = "<group>"; };
 		266E8742256350C000CF5151 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helper.swift"; sourceTree = "<group>"; };
 		266E8744256350C000CF5151 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				2669BE14270FA63D00806A63 /* aicook1.jpg */,
 				2669BE11270FA61000806A63 /* aicook2.jpg */,
 				2669BE15270FA65200806A63 /* aicook3.jpg */,
-				266E87222563120D00CF5151 /* classes.txt */,
 				F11D128E2F8A36F0003AB2FC /* SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn */,
 			);
 			path = SuperResolutionDemo;
@@ -233,7 +230,6 @@
 			files = (
 				269E747E255CC56400B1D6CA /* LaunchScreen.storyboard in Resources */,
 				2669BE18270FA65200806A63 /* aicook.txt in Resources */,
-				266E87232563120D00CF5151 /* classes.txt in Resources */,
 				269E747B255CC56400B1D6CA /* Assets.xcassets in Resources */,
 				2669BE19270FA65200806A63 /* aicook1.jpg in Resources */,
 				F11D128F2F8A36F0003AB2FC /* SPAN_tiny_c8_e2217_384x512x2_smp_int8.mnn in Resources */,
